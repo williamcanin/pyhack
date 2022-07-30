@@ -96,7 +96,6 @@
             [[ -f .python-version || -f requirements.txt || -f pyproject.toml || -n $extfind ]] || return
 
             ## Get the system Python version
-            # sys=$(python -c 'import sys; sys.stdout.write(f"{sys.version_info[0]}.{sys.version_info[1]}.{sys.version_info[2]}")') # DEPRECATED
             sys=$(python -c 'import sys; sys.stdout.write(".".join(map(str, sys.version_info[:3])))')
 
             ## Checks the local and global version of Pyenv, and the system
