@@ -50,10 +50,10 @@
 ### Plugins
     ## Auto Suggestions
 	zsh_autosuggestions="/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-	if [[ -f $zsh_autosuggestions && ! -d $ZSH_CUSTOM/plugins/zsh-autosuggestions ]]; then; source $zsh_autosuggestions; fi
+	if [[ -f $zsh_autosuggestions && ! -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]]; then; source $zsh_autosuggestions; fi
     ## Syntax Highlighting
 	zsh_syntax_highlighting="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
-	if [[ -f $zsh_syntax_highlighting && ! -d $ZSH_CUSTOM/plugins/zsh-syntax-highlighting ]]; then; source $zsh_syntax_highlighting; fi
+	if [[ -f $zsh_syntax_highlighting && ! -d ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]]; then; source $zsh_syntax_highlighting; fi
 
 
 ### Functions
