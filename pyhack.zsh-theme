@@ -86,7 +86,7 @@
     function pyversion {
 
         ## Check if you have Python on the system
-        if [[ $(which python) >/dev/null ]] && [[ $ENABLE_PYVERSION == "y" ]]; then
+        if [[ $(which python3) >/dev/null ]] && [[ $ENABLE_PYVERSION == "y" ]]; then
 
             ## Search file with extension .py|.pyc|.whl
             # pattern: ".*\.\(py\|pyc\|.whl\)"
