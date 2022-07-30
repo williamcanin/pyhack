@@ -2,6 +2,8 @@
 
 **pyHack** is a simple theme for **ZSH** that shows Python version, [Python](https://python.org) package version (*pyproject.toml*) and [Git](https://git-scm.com/) current branch information.
 
+![image](https://raw.githubusercontent.com/williamcanin/pyhack/assets/screenshot/img0.jpg)
+
 ## Installing
 
 1 - Clone your user's HOME:
