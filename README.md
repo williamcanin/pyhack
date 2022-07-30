@@ -23,7 +23,7 @@ Install [Oh My ZSH](https://ohmyz.sh/) and follow the steps below.
 1 - Clone your user's **HOME**:
 
 ```
-git clone https://github.com/williamcanin/pyhack.git ~/.pyhack
+git clone --single-branch https://github.com/williamcanin/pyhack.git ~/.pyhack
 ```
 
 2 - Create a symbolic link to **Oh My ZSH** custom themes folder:
