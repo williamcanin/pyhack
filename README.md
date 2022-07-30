@@ -6,7 +6,7 @@
 
 ## Installing
 
-1 - Clone your user's HOME:
+1 - Clone to your user's **HOME**:
 
 ```
 git clone --single-branch https://github.com/williamcanin/pyhack.git ~/.pyhack
@@ -17,12 +17,16 @@ git clone --single-branch https://github.com/williamcanin/pyhack.git ~/.pyhack
 ```
 echo "source $HOME/.pyhack/pyhack.zsh-theme" >> ~/.zshrc
 ```
+3 - Activate the **pyHack**:
 
+```
+zsh
+```
 ### Using with **Oh My ZSH**
 
 Install [Oh My ZSH](https://ohmyz.sh/) and follow the steps below.
 
-1 - Clone your user's **HOME**:
+1 - Clone to your user's **HOME**:
 
 ```
 git clone --single-branch https://github.com/williamcanin/pyhack.git ~/.pyhack
