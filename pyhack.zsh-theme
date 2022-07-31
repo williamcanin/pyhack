@@ -49,14 +49,19 @@
 
 ### Plugins
     ## Auto Suggestions
-	zsh_autosuggestions="/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    zsh_autosuggestions=$(find /usr/share/zsh* -name "zsh-autosuggestions.zsh")
 	if [[ -f $zsh_autosuggestions && ! -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]]; then; source $zsh_autosuggestions; fi
     ## Syntax Highlighting
-	zsh_syntax_highlighting="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
+    zsh_syntax_highlighting=$(find /usr/share/zsh* -name "zsh-syntax-highlighting.zsh")
 	if [[ -f $zsh_syntax_highlighting && ! -d ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]]; then; source $zsh_syntax_highlighting; fi
 
 
 ### Functions
+    ## Get distro ID
+    # function get_distro {
+    #     awk -F= '$1=="ID" { print $2 ;}' /etc/os-release
+    # }
+
     ## Get Virtualenv
     function venv {
         [[ $VIRTUAL_ENV && $ENABLE_VENV == "y" ]] && echo '%F{white}:::%F{green}'`basename $VIRTUAL_ENV`''
