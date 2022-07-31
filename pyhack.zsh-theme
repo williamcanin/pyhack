@@ -57,10 +57,16 @@
 
 
 ### Functions
-    ## Get distro ID
+    ## Get distro ID (Unused)
     # function get_distro {
     #     awk -F= '$1=="ID" { print $2 ;}' /etc/os-release
     # }
+
+    ## Search extensions in which Python uses
+    # pattern: ".*\.\(py\|pyc\|.whl\)"
+    function search_ext {
+        echo $(find -maxdepth 1 -regex ".*\.\(py\|pyc\|whl\)" 2>/dev/null)
+    }
 
     ## Get Virtualenv
     function venv {
@@ -75,7 +81,7 @@
 
     ## Get directory
     function directory {
-        echo "%2~"
+        echo "[%2~]"
     }
 
     ## Get package version
@@ -93,12 +99,8 @@
         ## Check if you have Python on the system
         if [[ $(which python3) >/dev/null ]] && [[ $ENABLE_PYVERSION == "y" ]]; then
 
-            ## Search file with extension .py|.pyc|.whl
-            # pattern: ".*\.\(py\|pyc\|.whl\)"
-            extfind=$(find -maxdepth 1 -regex ".*\.\(py\|pyc\|whl\)")
-
             ## Checks various file types used by Python
-            [[ -f .python-version || -f requirements.txt || -f pyproject.toml || -n $extfind ]] || return
+            [[ -f .python-version || -f requirements.txt || -f pyproject.toml || -n $(search_ext) ]] || return
 
             ## Get the system Python version
             sys=$(python -c 'import sys; sys.stdout.write(".".join(map(str, sys.version_info[:3])))')
@@ -121,9 +123,21 @@
 
     }
 
-### Show theme. Option cmdline: » | > | ->
-PROMPT='
-%F{green}$(directory)$(venv)$(pyversion)$(pkgversion)${vcs_info_msg_0_}
-%B$(user)%b%F{none} '
+    ## Prompt style and behavior
+    function prompt {
+        if [[ -f .python-version ||
+        -f requirements.txt ||
+        -f pyproject.toml ||
+        -n ${vcs_info_msg_0_} ||
+        -n $(search_ext) ]]; then
+            jumpline="\n"
+        else
+            jumpline=""
+        fi
+        ## Option cmdline arrow: » | > | ->
+        echo "$jumpline%F{green}$(directory)$(venv)$(pyversion)$(pkgversion)${vcs_info_msg_0_} $jumpline%B$(user)%b%F{none} "
+    }
 
-## End
+
+### Set prompt
+    PROMPT='$(prompt)'
