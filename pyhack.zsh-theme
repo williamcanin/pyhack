@@ -79,6 +79,14 @@
         if [[ $UID -eq 0 ]]; then echo '%F{red}#%F{none}'; else echo '$'; fi
     }
 
+    ## Show host
+    ## Note: Host will only be shown via SSH
+    function host {
+        only_host='[%m]%F{white}:%F{green}'
+        # user_host='[%n%F{white}@%F{green}%m]%F{white}:%F{green}'
+        if [[ $SSH_CONNECTION ]]; then echo "$only_host"; else echo ''; fi
+    }
+
     ## Get directory
     function directory {
         echo "[%2~]"
@@ -135,7 +143,7 @@
             jumpline=""
         fi
         ## Option cmdline arrow: » | > | ->
-        echo "$jumpline%F{green}$(directory)$(venv)$(pyversion)$(pkgversion)${vcs_info_msg_0_} $jumpline%B$(user)%b%F{none} "
+        echo "$jumpline%F{green}$(host)$(directory)$(venv)$(pyversion)$(pkgversion)${vcs_info_msg_0_} $jumpline%B$(user)%b%F{none} "
     }
 
 
