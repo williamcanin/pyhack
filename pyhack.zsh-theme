@@ -73,6 +73,8 @@ export PATH="$PATH:$PYHACK_HOME"
     ## Verify user, common or root
     function user {
         ## User name: '{%n}::'
+        ## Option cmdline arrow: » | > | ->
+        ## "%B#»%b "
         if [[ $UID -eq 0 ]]; then colorize "red" "%B#%b "; else colorize "green" "%B$%b "; fi
     }
 
@@ -139,7 +141,6 @@ export PATH="$PATH:$PYHACK_HOME"
             jumpline=""
         fi
 
-        ## Option cmdline arrow: » | > | ->
         echo -e "${jumpline}$(host)$(directory)$(venv)$(pyversion)$(pkgversion)${vcs_info_msg_0_}${jumpline}$(user)"
     }
 
