@@ -158,8 +158,8 @@ export PATH="$PATH:$PYHACK_HOME"
     zstyle ':vcs_info:*' check-for-changes true
 
     ## Set custom strings for an unstaged vcs repo changes (*) and staged changes (+)
-    zstyle ':vcs_info:*' unstagedstr ' *'
-    zstyle ':vcs_info:*' stagedstr ' +'
+    zstyle ':vcs_info:*' unstagedstr '*'
+    zstyle ':vcs_info:*' stagedstr '+'
 
     ## Set the format of the Git information for vcs_info
     # zstyle ':vcs_info:git:*' formats       '%F{white}:::%F{green}git:%b%u%c'
