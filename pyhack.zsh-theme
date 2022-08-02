@@ -8,6 +8,9 @@
 # License: https://github.com/williamcanin/pyhack/blob/main/LICENSE
 # Dependencies: zsh>=5.9
 
+PYHACK_HOME=$HOME/.pyhack
+export PATH="$PATH:$PYHACK_HOME"
+
 
 ### Basic settings
     ## Enable to show Python version. Option: y|n
@@ -18,6 +21,9 @@
 
     ## Option to enable/disable Virtualenv. Option: y|n
     ENABLE_VENV="y"
+
+    ## Load config user
+    [[ -f $PYHACK_HOME/pyhack.conf ]] && source $PYHACK_HOME/pyhack.conf
 
     ## Disable virtualenv
     export VIRTUAL_ENV_DISABLE_PROMPT=1
@@ -132,17 +138,9 @@
         else
             jumpline=""
         fi
-        ## Option cmdline arrow: » | > | ->
-        retval="${jumpline}\
-        $(host)\
-        $(directory)\
-        $(venv)\
-        $(pyversion)\
-        $(pkgversion)\
-        ${vcs_info_msg_0_}\
-        ${jumpline}"
 
-        echo "${retval// /}$(user)"
+        ## Option cmdline arrow: » | > | ->
+        echo -e "${jumpline}$(host)$(directory)$(venv)$(pyversion)$(pkgversion)${vcs_info_msg_0_}${jumpline}$(user)"
     }
 
 
