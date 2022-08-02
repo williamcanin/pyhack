@@ -133,7 +133,16 @@
             jumpline=""
         fi
         ## Option cmdline arrow: » | > | ->
-        echo "$jumpline$(host)$(directory)$(venv)$(pyversion)$(pkgversion)${vcs_info_msg_0_} $jumpline$(user)"
+        retval="${jumpline}\
+        $(host)\
+        $(directory)\
+        $(venv)\
+        $(pyversion)\
+        $(pkgversion)\
+        ${vcs_info_msg_0_}\
+        ${jumpline}"
+
+        echo "${retval// /}$(user)"
     }
 
 
@@ -157,8 +166,8 @@
     ## Set the format of the Git information for vcs_info
     # zstyle ':vcs_info:git:*' formats       '%F{white}:::%F{green}git:%b%u%c'
     # zstyle ':vcs_info:git:*' actionformats '%F{white}:::%F{green}git:%b|%a%u%c'
-    zstyle ':vcs_info:git:*' formats        $(colorize "green" "git:%b%u%c" $(separator))
-    zstyle ':vcs_info:git:*' actionformats  $(colorize "green" "git:%b|%a%u%c" $(separator))
+    zstyle ':vcs_info:git:*' formats        $(colorize "green" "git:%b(%u%c)" $(separator))
+    zstyle ':vcs_info:git:*' actionformats  $(colorize "green" "git:%b|(%a%u%c)" $(separator))
 
 
 ### Set prompt
